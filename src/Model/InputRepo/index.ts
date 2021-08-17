@@ -6,5 +6,6 @@ export {
   formSubmitted,
   $possibleToSubmit,
   fetchFail,
+  $loadedRepoFullName,
   fetchSuccess,
 } from "./model";

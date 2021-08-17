@@ -4,6 +4,7 @@ import { Repo, GithubFetchError } from "../../Types/types";
 
 export const $repoOwner = createStore("facebook");
 export const $repoName = createStore("react");
+export const $loadedRepoFullName = createStore("");
 
 export const ownerEdited = createEvent<ChangeEvent<HTMLInputElement>>();
 export const nameEdited = createEvent<ChangeEvent<HTMLInputElement>>();
@@ -17,6 +18,11 @@ export const fetchReposFx = createEffect<[string, string], Repo | GithubFetchErr
 });
 fetchReposFx.fail.watch(console.error); // we can use Sentry or anything else as well
 
-export const $possibleToSubmit = combine($repoOwner, $repoName, fetchReposFx.pending, (repoOwner, repoName, pending) => {
-  return !pending && repoOwner !== "" && repoName !== "";
-});
+export const $possibleToSubmit = combine(
+  $repoOwner,
+  $repoName,
+  fetchReposFx.pending,
+  (repoOwner, repoName, pending) => {
+    return !pending && repoOwner !== "" && repoName !== "";
+  }
+);

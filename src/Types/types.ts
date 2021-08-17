@@ -73,6 +73,5 @@ export type GithubFetchError = {
 export type Repo = {
   full_name: string;
   has_issues: boolean;
-  open_issues_count: number;
   // and other
 };
