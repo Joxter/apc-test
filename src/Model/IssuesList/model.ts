@@ -24,3 +24,5 @@ export const loadIssuesFx = createEffect<{ url: string; page: number }, { pages:
   }
 );
 loadIssuesFx.fail.watch(console.error); // we can use Sentry or anything else as well
+
+export const $isLoading = loadIssuesFx.pending;

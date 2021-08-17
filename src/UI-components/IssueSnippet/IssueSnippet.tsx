@@ -1,18 +1,23 @@
-import * as React from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
+import { Issue } from "../../Types/types";
+import { getIssueUrl } from "../../pages/urls";
+
+import css from "./IssueSnippet.module.css";
+
 type Props = {
-  title: string;
-  id: string;
-  url: string;
+  issue: Issue;
   Link: React.ComponentType<{ to: string }>;
 };
 
-export const IssueSnippet: React.FC<Props> = ({ title, url, id, Link }) => {
+export const IssueSnippet = React.memo<Props>(({ issue, Link }) => {
   return (
-    <div>
-      <p>Issue #{id}</p>
-      <Link to={url}>{title}</Link>
+    <div className={css.root}>
+      <h2>
+        <Link to={getIssueUrl(issue.id)}>Issue #{issue.number}</Link>
+      </h2>
+      {issue.title} <span className={css.state}>({issue.state})</span>
     </div>
   );
-};
+});
