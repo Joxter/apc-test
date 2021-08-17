@@ -15,7 +15,7 @@ import { InputRepoForm } from "../../UI-components/InputRepoForm";
 import { getIssuesUrl } from "../urls";
 
 formSubmitted.watch((ev) => ev.preventDefault());
-fetchFail.watch((res) => alert(`Repo ${res.message}`));
+fetchFail.watch((res) => alert(res.message));
 
 export const InputRepo: React.FC = () => {
   let history = useHistory();

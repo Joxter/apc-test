@@ -1,6 +1,6 @@
 import { createEvent, createStore, createEffect } from "effector";
 
-import { Issue, IssueState } from "../../Types/types";
+import { GithubFetchError, Issue, IssueState } from "../../Types/types";
 import { getPageFromLinkHeader } from "./utils";
 
 export const $issues = createStore<Issue[]>([]);
@@ -10,20 +10,22 @@ export const $totalPages = createStore(1);
 export const loadIssues = createEvent<string>();
 export const plusPage = createEvent();
 export const minusPage = createEvent();
+export const issuesLoadedSuccess = createEvent<{ pages: number; body: Issue[] }>();
+export const issuesLoadedFail = createEvent<{ pages: number; body: GithubFetchError }>();
 
 type LoadIssuesParams = {
   url: string;
   page: number;
   state: IssueState;
 };
-export const loadIssuesFx = createEffect<LoadIssuesParams, { pages: number; issues: Issue[] }>(
+export const loadIssuesFx = createEffect<LoadIssuesParams, { pages: number; body: Issue[] | GithubFetchError }>(
   async ({ url, page, state }) => {
     const res = await fetch(`https://api.github.com/repos/${url}/issues?page=${page}&state=${state}`);
-    const issues: Issue[] = await res.json();
+    const body: Issue[] = await res.json();
 
     return {
       pages: getPageFromLinkHeader(res.headers.get("Link")),
-      issues,
+      body,
     };
   }
 );

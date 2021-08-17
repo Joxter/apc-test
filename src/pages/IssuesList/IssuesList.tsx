@@ -14,10 +14,13 @@ import {
   $state,
   toggleClosedState,
   toggleOpenState,
+  issuesLoadedFail,
 } from "../../Model";
 import { Pagination } from "../../UI-components/Pagination";
 import { LoadingWrapper } from "../../UI-components/LoadingWrapper";
 import { IssueStateFilter } from "../../UI-components/IssueStateFilter/IssueStateFilter";
+
+issuesLoadedFail.watch((res) => alert(res.body.message));
 
 export const IssuesList: React.FC = () => {
   const repoName = useStore($repoName);
