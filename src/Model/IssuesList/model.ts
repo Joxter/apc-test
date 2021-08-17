@@ -1,7 +1,6 @@
-import { createEvent, createStore } from "effector";
+import { createEvent, createStore, createEffect } from "effector";
 
-import { Issue } from "../../Types/types";
-import { createEffect } from "effector/compat";
+import { Issue, IssueState } from "../../Types/types";
 import { getPageFromLinkHeader } from "./utils";
 
 export const $issues = createStore<Issue[]>([]);
@@ -9,12 +8,17 @@ export const $currentPage = createStore(1);
 export const $totalPages = createStore(1);
 
 export const loadIssues = createEvent<string>();
-export const plusPage = createEvent<unknown>();
-export const minusPage = createEvent<unknown>();
+export const plusPage = createEvent();
+export const minusPage = createEvent();
 
-export const loadIssuesFx = createEffect<{ url: string; page: number }, { pages: number; issues: Issue[] }>(
-  async ({ url, page }) => {
-    const res = await fetch(`https://api.github.com/repos/${url}/issues?page=${page}`);
+type LoadIssuesParams = {
+  url: string;
+  page: number;
+  state: IssueState;
+};
+export const loadIssuesFx = createEffect<LoadIssuesParams, { pages: number; issues: Issue[] }>(
+  async ({ url, page, state }) => {
+    const res = await fetch(`https://api.github.com/repos/${url}/issues?page=${page}&state=${state}`);
     const issues: Issue[] = await res.json();
 
     return {

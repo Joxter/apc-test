@@ -1,1 +1,1 @@
-export { $issues, loadIssues, $totalPages, $currentPage } from "./model";
+export { $issues, loadIssues, $totalPages, $currentPage, $isLoading, minusPage, plusPage, loadIssuesFx } from "./model";

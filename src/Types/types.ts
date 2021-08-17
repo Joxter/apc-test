@@ -19,6 +19,12 @@ type User = {
   site_admin: boolean;
 };
 
+export enum IssueState {
+  Open = "open",
+  Closed = "closed",
+  All = "all",
+}
+
 type Label = {
   id: number;
   node_id: string;
@@ -42,7 +48,7 @@ export type Issue = {
   title: string;
   user: User;
   labels: Label[];
-  state: string; // todo use enum ("open", ...)
+  state: IssueState;
   locked: boolean;
   assignee: unknown;
   assignees: unknown[];

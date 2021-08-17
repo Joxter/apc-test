@@ -1,21 +1,9 @@
-import { sample } from "effector";
-import { $currentPage, $issues, $totalPages, loadIssues, loadIssuesFx, minusPage, plusPage } from "./model";
-import { $loadedRepoFullName } from "../InputRepo";
+import { $currentPage, $issues, $totalPages, loadIssuesFx, minusPage, plusPage } from "./model";
 
 $issues.on(loadIssuesFx.doneData, (s, res) => res.issues);
 $totalPages.on(loadIssuesFx.doneData, (s, res) => res.pages);
 
-loadIssuesFx.doneData.watch(console.log);
-
-sample({
-  source: [$currentPage, $loadedRepoFullName],
-  clock: [loadIssues, plusPage, minusPage],
-  fn: ([page, url]) => {
-    return { page, url };
-  },
-  target: loadIssuesFx,
-});
-
 $currentPage.on(plusPage, (state) => state + 1).on(minusPage, (state) => state - 1);
 
+loadIssuesFx.doneData.watch(console.log);
 $issues.watch(console.log);
