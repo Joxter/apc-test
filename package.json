@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@auth0/auth0-react": "^1.6.0",
     "effector": "^21.8.12",
     "effector-react": "^21.3.3",
     "react": "^17.0.2",
@@ -18,6 +17,7 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
+    "@types/react": "^17.0.18",
     "jest": "^27.0.6",
     "parcel": "^2.0.0-rc.0",
     "prettier": "^2.3.2",

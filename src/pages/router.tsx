@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import { InputRepo } from "./InputRepo/Issue";
+import { InputRepo } from "./InputRepo";
 import { IssuesList } from "./IssuesList";
 import { Issue } from "./Issue";
 
