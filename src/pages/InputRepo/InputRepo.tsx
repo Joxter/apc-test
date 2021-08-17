@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import {
   $possibleToSubmit,
   $repoName,
@@ -7,37 +8,38 @@ import {
   nameEdited,
   ownerEdited,
   fetchFail,
+  fetchSuccess,
 } from "../../Model";
 import { useStore } from "effector-react";
+import { InputRepoForm } from "../../UI-components/InputRepoForm";
+import { getIssuesUrl } from "../urls";
 
 formSubmitted.watch((ev) => ev.preventDefault());
 fetchFail.watch((res) => alert(`Repo ${res.message}`));
 
 export const InputRepo: React.FC = () => {
+  let history = useHistory();
+
+  useEffect(() => {
+    // do not really like this
+    return fetchSuccess.watch(() => history.push(getIssuesUrl()));
+  }, []);
+
   const repoOwner = useStore($repoOwner);
   const repoName = useStore($repoName);
-  const possibleToFetch = useStore($possibleToSubmit);
+  const isPossibleToFetch = useStore($possibleToSubmit);
 
   return (
     <div>
-      InputRepo
-      <form onSubmit={formSubmitted}>
-        <p>
-          <label>
-            Repo owner
-            <input type="text" value={repoOwner} onChange={ownerEdited} />
-          </label>
-        </p>
-        <p>
-          <label>
-            Repo owner
-            <input type="text" value={repoName} onChange={nameEdited} />
-          </label>
-        </p>
-        <button type="submit" disabled={!possibleToFetch}>
-          view issues
-        </button>
-      </form>
+      <h1>Issue viewer</h1>
+      <InputRepoForm
+        onSubmit={formSubmitted}
+        ownerName={repoOwner}
+        repoName={repoName}
+        onOwnerNameChange={ownerEdited}
+        onRepoNameChange={nameEdited}
+        isSubmitDisabled={!isPossibleToFetch}
+      />
     </div>
   );
 };

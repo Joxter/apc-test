@@ -28,5 +28,3 @@ const fetchReposResult = split(fetchReposFx.doneData, {
 });
 forward({ from: fetchReposResult.fail, to: fetchFail });
 forward({ from: fetchReposResult.success, to: fetchSuccess });
-
-fetchSuccess.watch(console.log);
