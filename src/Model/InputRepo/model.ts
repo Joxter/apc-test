@@ -15,7 +15,7 @@ export const fetchFail = createEvent<GithubFetchError>();
 export const fetchReposFx = createEffect<[string, string], Repo | GithubFetchError>(async ([repoOwner, repoName]) => {
   return fetch(`https://api.github.com/repos/${repoOwner}/${repoName}`).then((res) => res.json());
 });
-fetchReposFx.failData.watch(console.error); // we can use Sentry or anything else as well
+fetchReposFx.fail.watch(console.error); // we can use Sentry or anything else as well
 
 export const $possibleToSubmit = combine($repoOwner, $repoName, fetchReposFx.pending, (repoOwner, repoName, pending) => {
   return !pending && repoOwner !== "" && repoName !== "";
