@@ -1,1 +1,7 @@
-export { $state, toggleOpenState, toggleClosedState } from "./model";
+export {
+  $state,
+  toggleOpenState,
+  toggleClosedState,
+  $sorting,
+  sortingFieldClicked,
+} from "./model";

@@ -1,5 +1,5 @@
-import { $state, toggleClosedState, toggleOpenState } from "./model";
-import { IssueState } from "../../Types/types";
+import { $sorting, $state, sortingFieldClicked, toggleClosedState, toggleOpenState } from "./model";
+import { IssueState, SortDirection } from "../../Types/types";
 
 $state
   .on(toggleClosedState, (state) => {
@@ -16,3 +16,17 @@ $state
       [IssueState.Open]: IssueState.Open,
     }[state];
   });
+
+$sorting.on(sortingFieldClicked, (state, field) => {
+  if (state.field === field) {
+    return {
+      field: state.field,
+      direction: state.direction === SortDirection.Desc ? SortDirection.Asc : SortDirection.Desc,
+    };
+  }
+
+  return {
+    field: field,
+    direction: SortDirection.Desc,
+  };
+});

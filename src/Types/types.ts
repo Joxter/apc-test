@@ -25,6 +25,17 @@ export enum IssueState {
   All = "all",
 }
 
+export enum SortField {
+  Created = "created",
+  Updated = "updated",
+  Comments = "comments",
+}
+
+export enum SortDirection {
+  Asc = "asc",
+  Desc = "desc",
+}
+
 type Label = {
   id: number;
   node_id: string;
