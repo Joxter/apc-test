@@ -1,6 +1,5 @@
-#Technical assignment, Morozov Nikolay
-
-Create single page application that allows to browse GitHub issues.
+#Technical assignment
+_Nikolay Morozov, joxterrr@gmail.com_
 
 ## Main comands
 
@@ -9,8 +8,6 @@ Basic install `npm install`
 To run dev mode build `npm run dev`
 
 To run tests `npm run test`
-
-## Notes
 
 ### Folders:
 
@@ -31,8 +28,12 @@ Basic feature structure:
 
 `/utils` just utils with tests, please, be careful
 
-**All of it below can be discussed.**
+**All of the above can be discussed. I'm not sure I got the "Minimum required documentation is provided" point clearly and no time to ask**
 
-**This code is not perfect but good enough and has a good balance between test-task/quality/time-limit.
-I wrote '//todo' comments sometimes for like "better to fix this for production".
-A lot of tests, localStorage for bookmarks, aborting requests and other rare cases and features left deliberatelly, just not to waste time before a deadline.**
+This code is not perfect but good enough and has a good balance between test-task/quality/time-limit.
+I wrote `//todo` comments sometimes for like "better to fix this for production".
+
+A lot of tests, localStorage for bookmarks, aborting requests and other rare cases
+and features left deliberately, just not to waste time before a deadline.
+
+I left the commits "as is", though I usually clean them up and never do such a big task in one go.
