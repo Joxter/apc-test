@@ -1,4 +1,4 @@
-#Technical assignment
+# Technical assignment
 _Nikolay Morozov, joxterrr@gmail.com_
 
 ## Main comands
