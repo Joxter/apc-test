@@ -1,6 +1,5 @@
 import { forward, guard, split } from "effector";
 import {
-  $loadedRepoFullName,
   $possibleToSubmit,
   $repoName,
   $repoOwner,
@@ -29,4 +28,3 @@ const fetchReposResult = split(fetchReposFx.doneData, {
 });
 forward({ from: fetchReposResult.fail, to: fetchFail });
 forward({ from: fetchReposResult.success, to: fetchSuccess });
-forward({ from: fetchReposResult.success.map((repo) => repo.full_name), to: $loadedRepoFullName });

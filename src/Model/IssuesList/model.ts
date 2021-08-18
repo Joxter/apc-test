@@ -4,27 +4,30 @@ import { GithubFetchError, Issue, IssueState, SortDirection, SortField } from ".
 import { getPageFromLinkHeader } from "./utils";
 import { queryFromObject } from "../../utils/url";
 
+export const $repoParams = createStore<{ owner: string; repo: string }>({ owner: "", repo: "" });
 export const $issues = createStore<Issue[]>([]);
-export const $currentPage = createStore(1); // todo reduce current page if limit became small
+export const $currentPage = createStore(1); // todo reduce currentPage if totalPages became small
 export const $totalPages = createStore(1);
 
 export const loadIssues = createEvent<string>();
+export const issuesListPageOpened = createEvent<{ owner: string; repo: string }>();
+export const issuesListPageClosed = createEvent();
 export const plusPage = createEvent();
 export const minusPage = createEvent();
 export const issuesLoadedSuccess = createEvent<{ pages: number; body: Issue[] }>();
 export const issuesLoadedFail = createEvent<{ pages: number; body: GithubFetchError }>();
 
 type LoadIssuesParams = {
-  url: string;
+  repoParams: { owner: string; repo: string };
   page: number;
   state: IssueState;
   field: SortField;
   direction: SortDirection;
 };
 export const loadIssuesFx = createEffect<LoadIssuesParams, { pages: number; body: Issue[] | GithubFetchError }>(
-  async ({ url, page, state, field, direction }) => {
-    let query = queryFromObject({ page, state, field, direction })
-    const res = await fetch(`https://api.github.com/repos/${url}/issues?${query}`);
+  async ({ repoParams, page, state, field, direction }) => {
+    let query = queryFromObject({ page, state, field, direction });
+    const res = await fetch(`https://api.github.com/repos/${repoParams.owner}/${repoParams.repo}/issues?${query}`);
     const body: Issue[] = await res.json();
 
     return {

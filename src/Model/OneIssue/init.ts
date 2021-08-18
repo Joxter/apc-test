@@ -1,5 +1,5 @@
 import { oneIssueLoadedSuccess, oneIssueLoadedFail, loadOneIssueFx, $issue, pageClosed, pageOpened } from "./model";
-import { forward, split } from "effector";
+import { forward, sample, split } from "effector";
 import { GithubFetchError, Issue } from "../../Types/types";
 
 const loadOneIssueResult = split(loadOneIssueFx.doneData, {
@@ -10,3 +10,11 @@ forward({ from: loadOneIssueResult.fail, to: oneIssueLoadedFail });
 forward({ from: loadOneIssueResult.success, to: oneIssueLoadedSuccess });
 
 $issue.on(oneIssueLoadedSuccess, (s, res) => res).reset(pageClosed);
+
+sample({
+  clock: pageOpened,
+  fn: ({ id, repo, owner }) => {
+    return { number: id, repo, owner };
+  },
+  target: loadOneIssueFx,
+});

@@ -12,7 +12,6 @@ import {
 } from "../../Model";
 import { useStore } from "effector-react";
 import { InputRepoForm } from "../../UI-components/InputRepoForm";
-import { getIssuesUrl } from "../urls";
 
 formSubmitted.watch((ev) => ev.preventDefault());
 fetchFail.watch((res) => alert(res.message));
@@ -22,7 +21,7 @@ export const InputRepo: React.FC = () => {
 
   useEffect(() => {
     // do not really like this
-    return fetchSuccess.watch(() => history.push(getIssuesUrl()));
+    return fetchSuccess.watch(({full_name}) => history.push(`${full_name}/issues`));
   }, []);
 
   const repoOwner = useStore($repoOwner);

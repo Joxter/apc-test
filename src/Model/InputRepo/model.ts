@@ -2,8 +2,8 @@ import { combine, createEffect, createEvent, createStore } from "effector";
 import { ChangeEvent, FormEvent } from "react";
 import { Repo, GithubFetchError } from "../../Types/types";
 
-export const $repoOwner = createStore("facebook");
-export const $repoName = createStore("react");
+export const $repoOwner = createStore("");
+export const $repoName = createStore("");
 export const $loadedRepoFullName = createStore("");
 
 export const ownerEdited = createEvent<ChangeEvent<HTMLInputElement>>();

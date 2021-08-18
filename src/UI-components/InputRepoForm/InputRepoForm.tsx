@@ -21,12 +21,12 @@ export const InputRepoForm: React.FC<Props> = ({
     <form onSubmit={onSubmit}>
       <p>
         <label>
-          Repo owner <input type="text" value={ownerName} onChange={onOwnerNameChange} />
+          Repo owner <input type="text" name="owner" value={ownerName} onChange={onOwnerNameChange} />
         </label>
       </p>
       <p>
         <label>
-          Repo name <input type="text" value={repoName} onChange={onRepoNameChange} />
+          Repo name <input type="text" name="repo" value={repoName} onChange={onRepoNameChange} />
         </label>
       </p>
       <button type="submit" disabled={isSubmitDisabled}>

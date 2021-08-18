@@ -1,20 +1,18 @@
 import { forward, sample } from "effector";
 
-import { $currentPage, loadIssues, minusPage, plusPage } from "./IssuesList";
-import { $loadedRepoFullName, fetchSuccess } from "./InputRepo";
+import { $currentPage, $repoParams, issuesListPageOpened, loadIssues, minusPage, plusPage } from "./IssuesList";
 import { loadIssuesFx } from "./IssuesList";
 import { $state, toggleClosedState, toggleOpenState, $sorting, sortingFieldClicked } from "./IssueFilters";
 import "./InputRepo/init";
 import "./IssuesList/init";
 import "./IssueFilters/init";
-
-forward({ from: fetchSuccess.map((repo) => repo.full_name), to: loadIssues });
+import "./OneIssue/init";
 
 sample({
-  source: [$currentPage, $loadedRepoFullName, $state, $sorting],
-  clock: [loadIssues, plusPage, minusPage, toggleOpenState, toggleClosedState, sortingFieldClicked],
-  fn: ([page, url, state, sorting]) => {
-    return { url, page, state, field: sorting.field, direction: sorting.direction };
+  source: [$currentPage, $repoParams, $state, $sorting],
+  clock: [issuesListPageOpened, plusPage, minusPage, toggleOpenState, toggleClosedState, sortingFieldClicked],
+  fn: ([page, repoParams, state, sorting]) => {
+    return { repoParams, page, state, ...sorting };
   },
   target: loadIssuesFx,
 });

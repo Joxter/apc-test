@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import { InputRepo } from "./InputRepo";
 import { IssuesList } from "./IssuesList";
 import { Issue } from "./Issue";
-import { getIssuesUrl, getIssueUrl } from "./urls";
 
 export const Router: React.FC = () => {
   return (
@@ -20,10 +19,10 @@ export const Router: React.FC = () => {
         <Route path="/" exact>
           <InputRepo />
         </Route>
-        <Route path={getIssuesUrl()} exact>
+        <Route path="/:owner/:repo/issues/" exact>
           <IssuesList />
         </Route>
-        <Route path={getIssueUrl()} exact>
+        <Route path="/:owner/:repo/issues/:id" exact>
           <Issue />
         </Route>
         <Route path="*">
