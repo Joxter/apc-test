@@ -1,6 +1,6 @@
 import { createEvent, createStore } from "effector";
 import { ChangeEvent } from "react";
-import { IssueState, SortDirection, SortField } from "../../Types/types";
+import { IssueState, SortDirection, SortField } from "../../Types/github";
 
 export const $state = createStore(IssueState.Open);
 export const $sorting = createStore({ field: SortField.Created, direction: SortDirection.Desc });

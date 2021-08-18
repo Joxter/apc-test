@@ -1,6 +1,6 @@
 import { createEvent, createStore } from "effector";
 
-import { Issue } from "../../Types/types";
+import { Issue } from "../../Types/github";
 
 export const $favIssues = createStore<Record<string, string>>({});
 

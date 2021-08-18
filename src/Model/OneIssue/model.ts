@@ -1,6 +1,6 @@
 import { createEvent, createStore, createEffect } from "effector";
 
-import { GithubFetchError, Issue } from "../../Types/types";
+import { GithubFetchError, Issue } from "../../Types/github";
 
 export const $issue = createStore<Issue | null>(null);
 

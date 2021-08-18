@@ -1,6 +1,6 @@
 import { combine, createEffect, createEvent, createStore } from "effector";
 import { ChangeEvent, FormEvent } from "react";
-import { Repo, GithubFetchError } from "../../Types/types";
+import { Repo, GithubFetchError } from "../../Types/github";
 
 export const $repoOwner = createStore("");
 export const $repoName = createStore("");

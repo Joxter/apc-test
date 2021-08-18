@@ -11,7 +11,7 @@ import {
   ownerEdited,
   resetInputRepo,
 } from "./model";
-import { GithubFetchError, Repo } from "../../Types/types";
+import { GithubFetchError, Repo } from "../../Types/github";
 
 $repoOwner.on(ownerEdited, (s, ev) => ev.target.value).reset(resetInputRepo);
 $repoName.on(nameEdited, (s, ev) => ev.target.value).reset(resetInputRepo);

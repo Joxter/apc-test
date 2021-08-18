@@ -1,5 +1,5 @@
 import React from "react";
-import { SortDirection, SortField } from "../../Types/types";
+import { SortDirection, SortField } from "../../Types/github";
 
 import css from "./IssueSort.module.css";
 

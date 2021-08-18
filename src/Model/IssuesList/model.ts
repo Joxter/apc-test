@@ -1,6 +1,6 @@
 import { createEvent, createStore, createEffect } from "effector";
 
-import { GithubFetchError, Issue, IssueState, SortDirection, SortField } from "../../Types/types";
+import { GithubFetchError, Issue, IssueState, SortDirection, SortField } from "../../Types/github";
 import { getPageFromLinkHeader } from "./utils";
 import { queryFromObject } from "../../utils/url";
 

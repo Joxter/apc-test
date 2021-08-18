@@ -12,7 +12,7 @@ import {
   plusPage,
 } from "./model";
 import { forward, split } from "effector";
-import { GithubFetchError, Issue } from "../../Types/types";
+import { GithubFetchError, Issue } from "../../Types/github";
 
 const loadIssuesResult = split(loadIssuesFx.doneData, {
   success: (res): res is { pages: number; body: Issue[] } => Array.isArray(res.body),

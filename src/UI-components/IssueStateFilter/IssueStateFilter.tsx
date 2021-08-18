@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from "react";
-import { IssueState } from "../../Types/types";
+import { IssueState } from "../../Types/github";
 
 import css from "./IssueStateFilter.module.css";
 

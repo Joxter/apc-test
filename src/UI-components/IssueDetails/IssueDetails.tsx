@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { Issue } from "../../Types/types";
+import { Issue } from "../../Types/github";
 
 import css from "./IssueDetails.module.css";
 

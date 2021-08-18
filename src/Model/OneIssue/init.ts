@@ -1,6 +1,6 @@
 import { oneIssueLoadedSuccess, oneIssueLoadedFail, loadOneIssueFx, $issue, pageClosed, pageOpened } from "./model";
 import { forward, sample, split } from "effector";
-import { GithubFetchError, Issue } from "../../Types/types";
+import { GithubFetchError, Issue } from "../../Types/github";
 
 const loadOneIssueResult = split(loadOneIssueFx.doneData, {
   success: (res): res is Issue => "id" in res,

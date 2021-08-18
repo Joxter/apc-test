@@ -1,5 +1,5 @@
 import { $sorting, $state, sortingFieldClicked, toggleClosedState, toggleOpenState } from "./model";
-import { IssueState, SortDirection } from "../../Types/types";
+import { IssueState, SortDirection } from "../../Types/github";
 
 $state
   .on(toggleClosedState, (state) => {

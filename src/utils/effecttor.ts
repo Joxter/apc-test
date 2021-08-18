@@ -1,5 +1,5 @@
 import { createEffect, forward, split, Event } from "effector";
-import { GithubFetchError } from "../Types/types";
+import { GithubFetchError } from "../Types/github";
 
 // todo not ready, need to manage with headers for pagination.
 //      idea: create separated "createGithubPaginationEffect" function
