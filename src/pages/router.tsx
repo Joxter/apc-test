@@ -7,14 +7,9 @@ import { Issue } from "./Issue";
 export const Router: React.FC = () => {
   return (
     <BrowserRouter>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/issues">Issues</Link>
-        </li>
-      </ul>
+      <p>
+        <Link to="/">Home</Link>
+      </p>
       <Switch>
         <Route path="/" exact>
           <InputRepo />

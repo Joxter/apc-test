@@ -20,8 +20,7 @@ export const InputRepo: React.FC = () => {
   let history = useHistory();
 
   useEffect(() => {
-    const unsubscribe = fetchSuccess.watch(({ full_name }) => history.push(`${full_name}/issues`));
-    return unsubscribe();
+    return fetchSuccess.watch(({ full_name }) => history.push(`${full_name}/issues`));
   }, []);
 
   const repoOwner = useStore($repoOwner);
