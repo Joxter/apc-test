@@ -9,11 +9,12 @@ import {
   formSubmitted,
   nameEdited,
   ownerEdited,
+  resetInputRepo,
 } from "./model";
 import { GithubFetchError, Repo } from "../../Types/types";
 
-$repoOwner.on(ownerEdited, (s, ev) => ev.target.value);
-$repoName.on(nameEdited, (s, ev) => ev.target.value);
+$repoOwner.on(ownerEdited, (s, ev) => ev.target.value).reset(resetInputRepo);
+$repoName.on(nameEdited, (s, ev) => ev.target.value).reset(resetInputRepo);
 
 guard({
   source: [$repoOwner, $repoName],

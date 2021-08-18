@@ -26,6 +26,7 @@ type LoadIssuesParams = {
 };
 export const loadIssuesFx = createEffect<LoadIssuesParams, { pages: number; body: Issue[] | GithubFetchError }>(
   async ({ repoParams, page, state, field, direction }) => {
+    // todo need to create better way for the real production, no logic must be here
     let query = queryFromObject({ page, state, field, direction });
     const res = await fetch(`https://api.github.com/repos/${repoParams.owner}/${repoParams.repo}/issues?${query}`);
     const body: Issue[] = await res.json();

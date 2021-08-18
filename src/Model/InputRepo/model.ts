@@ -4,11 +4,11 @@ import { Repo, GithubFetchError } from "../../Types/types";
 
 export const $repoOwner = createStore("");
 export const $repoName = createStore("");
-export const $loadedRepoFullName = createStore("");
 
 export const ownerEdited = createEvent<ChangeEvent<HTMLInputElement>>();
 export const nameEdited = createEvent<ChangeEvent<HTMLInputElement>>();
 export const formSubmitted = createEvent<FormEvent<HTMLFormElement>>();
+export const resetInputRepo = createEvent();
 
 export const fetchSuccess = createEvent<Repo>();
 export const fetchFail = createEvent<GithubFetchError>();
